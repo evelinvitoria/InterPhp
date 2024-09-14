@@ -19,16 +19,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="NovoUsuario.php">Novo Usuário <span class="sr-only">(Página atual)</span></a>
+          <a class="nav-link" href="?page=novo">Novo Usuário <span class="sr-only">(Página atual)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Listarusuario.php">Listar Usuários</a>
+          <a class="nav-link" href="?page=listar">Listar Usuários</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ExcluirUsuario.php">Excluir Usuário</a>
+          <a class="nav-link" href="?page=excluir">Excluir Usuário</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="Atualizardados.php">Atualizar Dados</a>
+          <a class="nav-link disabled" href="?page=atualizar">Atualizar Dados</a>
         </li>
       </ul>
     </div>
@@ -37,7 +37,10 @@
   <div class="row">
     <div class="col mt-5">
     <?php 
-    switch($_REQUEST["page"]){
+      include("config.php");
+
+    $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : ""; // Verifica se "page" está definida
+      switch($page){
       case "novo":
         include("NovoUsuario.php");
       break;
@@ -50,6 +53,9 @@
       case "atualizar":
         include("Atualizardados.php");
       break;
+      case "salvar":
+        include("salvar-usuario.php");
+        break;
       default:
       print "Bem Vindos";
 
