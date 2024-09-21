@@ -36,25 +36,29 @@
 <div class="container">
   <div class="row">
     <div class="col mt-5">
-    <?php 
+   <?php 
+  include("config.php");
+
+  // Verifica se a chave 'page' está definida no array $_REQUEST
+  if (isset($_REQUEST["page"])) {
     switch($_REQUEST["page"]){
       case "novo":
         include("NovoUsuario.php");
-      break;
-      case "listar":
+        break;
+      case "Listar":
         include("Listarusuario.php");
-      break;
-      case "excluir":
-        include("ExcluirUsuario.php");
-      break;
-      case "atualizar":
-        include("Atualizardados.php");
-      break;
-      default:
-      print "Bem Vindos";
+        break;
+        case "salvar";
+          include("salvarUsusuario.php");
+          break; 
+        print "<h1>Bem Vindos!</h1>";
+    }
+  } else {
+    // Caso 'page' não esteja definida, exibe mensagem padrão
+    print "<h1>Bem Vindos!</h1>";
+  }
+?>
 
-   }
-   ?>
 
     </div>
   </div>
