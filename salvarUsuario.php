@@ -10,7 +10,7 @@ switch ($_REQUEST['acao']) {
 				break;
 
 				$res = $conn->query($sql);	
-	case 'editar':
+	case 'editar':// faltando terminar
 	break;
 
 	case 'excluir'
